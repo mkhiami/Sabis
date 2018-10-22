@@ -20,12 +20,14 @@ namespace Sabis.Data
       return (await _context.SaveChangesAsync() >= 0);
     }
 
-    public async Task<IEnumerable<Question>> GetQuestions(int? subjectId=null, int? conceptId=null)
+    public async Task<IEnumerable<object>> GetQuestions(int? subjectId=null, int? conceptId=null)
     {
       return await _context.Questions.Where(question =>
                                             (subjectId == null || question.Concept.SubjectId == subjectId)
                                             &&  (conceptId == null || question.ConceptId == conceptId)
-      ).ToListAsync();
+      )
+                           .Select( q=> new { Id = q.Id, Description =  q.Description, Body = q.Body, ConceptId = q.ConceptId, ConceptName = q.Concept.Description, ConceptNumber = q.Concept.Number, Subject = q.Concept.Subject.Name})
+                           .ToListAsync();
     }
 
     public async Task<IEnumerable<Concept>> GetConcepts(int? subjectId=null)

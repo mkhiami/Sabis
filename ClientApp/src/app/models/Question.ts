@@ -4,5 +4,8 @@ export interface Question {
     order: number;
     body: string;
     description: string;
-  
+      conceptname: string;
+          subject: string;
+          conceptnumber: string;
+
 }

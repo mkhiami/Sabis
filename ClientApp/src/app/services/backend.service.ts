@@ -38,7 +38,7 @@ import { Subject } from '../models/subject';
           return true;
       }))};
       getConcepts(id): Observable<boolean> {
-    return this.http.get("/api/sabis/concepts?subjectid="id)
+    return this.http.get("/api/sabis/concepts?subjectid="+id)
       .pipe(
         map((data: Concept[]) => {
           this.concepts = data;

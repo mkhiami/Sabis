@@ -8,7 +8,7 @@ namespace Sabis.Data
     {
         Task<IEnumerable<Answer>> GetAnswers(int? questionId = null);
         Task<Question> GetQuestionById(int id);
-        Task<IEnumerable<Question>> GetQuestions(int? subjectId = null, int? conceptId = null);
+        Task<IEnumerable<object>> GetQuestions(int? subjectId = null, int? conceptId = null);
         Task<IEnumerable<Concept>> GetConcepts(int? subjectId = null);
 
         Task<IEnumerable<Subject>> GetSubjects();
